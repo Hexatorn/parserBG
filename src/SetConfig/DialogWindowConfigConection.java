@@ -8,6 +8,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -36,7 +37,7 @@ public class DialogWindowConfigConection extends Application {
                     <Label - login>
                     <Text Field - login>
                     <Label - password>
-                    <Text Field - password>
+                    <Password Field - password>
                 <HBox - buttons container> <- add hBox to set spacing
                     <Button - Save>
                 </HBox - buttons container>
@@ -54,18 +55,13 @@ public class DialogWindowConfigConection extends Application {
         TextField tf_login = new TextField();
         //Password
         Label lbl_password = new Label("Hasło");
-        TextField tf_password = new TextField();
+        PasswordField pf_password = new PasswordField();
         //Button(s)
         Button btn_save = new Button("Zapisz");
         HBox hb_butons = new HBox(btn_save);
         hb_butons.paddingProperty().setValue(new Insets(30,0,20,0));
         hb_butons.setAlignment(Pos.CENTER_RIGHT);
-        btn_save.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                SaveData.SaveData();
-            }
-        });
+        btn_save.setOnAction(event -> SaveData.SaveData());
         //Add all to main container
         VBox root = new VBox();
         root.paddingProperty().setValue(new Insets(20,20,0,20));
@@ -74,7 +70,7 @@ public class DialogWindowConfigConection extends Application {
                 lbl_login,
                 tf_login,
                 lbl_password,
-                tf_password,
+                pf_password,
                 hb_butons);
         //Create Scene
         primaryStage.setScene(new Scene(root, 300, 250));
