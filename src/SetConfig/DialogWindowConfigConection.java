@@ -1,8 +1,6 @@
 package SetConfig;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -19,7 +17,11 @@ import javafx.stage.Stage;
  * Created by Hexatorn on 2017-11-23.
  */
 public class DialogWindowConfigConection extends Application {
-    static void showWindow(){
+
+    static private SERWER_TYPE serwer_type = null;
+
+    static void showWindow(SERWER_TYPE type){
+        serwer_type = type;
         launch();
         System.out.println("Okno");
     }
@@ -61,7 +63,12 @@ public class DialogWindowConfigConection extends Application {
         HBox hb_butons = new HBox(btn_save);
         hb_butons.paddingProperty().setValue(new Insets(30,0,20,0));
         hb_butons.setAlignment(Pos.CENTER_RIGHT);
-        btn_save.setOnAction(event -> SaveData.SaveData());
+        btn_save.setOnAction(event -> SaveData.save(
+                serwer_type,
+                tf_ServerAdress.getText(),
+                tf_login.getText(),
+                pf_password.getText()
+        ));
         //Add all to main container
         VBox root = new VBox();
         root.paddingProperty().setValue(new Insets(20,20,0,20));

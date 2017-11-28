@@ -6,6 +6,6 @@ package SetConfig;
 public class SetConfig {
     public static void set(){
         System.out.println("ustaw konfig");
-        DialogWindowConfigConection.showWindow();
+        DialogWindowConfigConection.showWindow(SERWER_TYPE.FTP);
     }
 }
