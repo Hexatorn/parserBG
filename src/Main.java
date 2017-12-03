@@ -14,7 +14,8 @@ public class Main {
         if (args.length==1 && args[0].equals("config")){
             System.out.println("config all");
         } else if (args.length==1 && args[0].equals("configFTP")){
-
+            DialogWindowConfigConection dialogWindowConfigConection = new DialogWindowConfigConection();
+            dialogWindowConfigConection.showWindow(SERWER_TYPE.FTP);
 
         } else if (args.length==1 && args[0].equals("configSQL")){
             System.out.println("configSQL");

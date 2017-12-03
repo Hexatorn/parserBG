@@ -15,9 +15,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
-/**
- * Created by Hexatorn on 2017-11-23.
- */
 public class DialogWindowConfigConection extends Application {
 
     private static SERWER_TYPE serwer_type = null;
@@ -28,14 +25,6 @@ public class DialogWindowConfigConection extends Application {
         launch();
         System.out.println("Okno");
     }
-
-
-    TextField tf_login;
-
-    public String getTf_login() {
-        return tf_login.getText().toString();
-    }
-
 
     @Override
     public void start(Stage primaryStage)  {
@@ -65,7 +54,7 @@ public class DialogWindowConfigConection extends Application {
         vb_serverAdress.paddingProperty().setValue(new Insets(0,0,20,0));
         //Login
         Label lbl_login = new Label("Login");
-        tf_login = new TextField();
+        TextField tf_login = new TextField();
         //Password
         Label lbl_password = new Label("Hasło");
         PasswordField pf_password = new PasswordField();
@@ -77,12 +66,12 @@ public class DialogWindowConfigConection extends Application {
         hb_butons.paddingProperty().setValue(new Insets(30,0,20,0));
         hb_butons.setAlignment(Pos.CENTER_RIGHT);
 
-        btn_save.setOnAction(new EventHandler<ActionEvent>() {
-             @Override
-             public void handle(ActionEvent event) {
-                 System.out.println(config + "In Window");
-                 primaryStage.hide();
-             }
+        btn_save.setOnAction(event -> {
+            System.out.println(config + "In Window");
+            System.out.println(tf_ServerAdress.getText());
+            System.out.println(tf_login.getText());
+            System.out.println(pf_password.getText());
+            primaryStage.hide();
         });
 
         //Add all to main container
