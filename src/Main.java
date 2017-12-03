@@ -1,12 +1,12 @@
 import SetConf.*;
-import javafx.application.Application;
+import RebuildConfig.*;
+import Util.SERWER_TYPE;
 
 public class Main {
-    public static ConfigData dataFTP = new ConfigData();
-
-    static String testString;
-
     public static void main(String[] args) {
+
+        CreateNewConfig.create();
+
         ReadConfig.read();
         if (args.length==0){
             System.out.println("Przetwarzaj dane");
@@ -17,11 +17,10 @@ public class Main {
             DialogWindowConfigConection dialogWindowConfigConection = new DialogWindowConfigConection();
             dialogWindowConfigConection.showWindow(SERWER_TYPE.FTP);
 
+
+
         } else if (args.length==1 && args[0].equals("configSQL")){
             System.out.println("configSQL");
         }
-
-
-
     }
 }

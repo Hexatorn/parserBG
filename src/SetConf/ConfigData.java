@@ -1,13 +1,18 @@
 package SetConf;
 
-/**
- * Created by Hexatorn on 2017-12-01.
- */
+import Util.SERWER_TYPE;
+
 public class ConfigData {
+
     private SERWER_TYPE serwer_type = null;
     private String serwerAdress ="";
     private String login = "";
     private String password = "";
+
+    public ConfigData(SERWER_TYPE serwer_type) {
+        this();
+        this.serwer_type = serwer_type;
+    }
 
     public ConfigData(){
         this.serwerAdress = "null";
@@ -15,7 +20,7 @@ public class ConfigData {
         this.password = "****";
     }
 
-    ConfigData(SERWER_TYPE serwer_type, String serwerAdress, String login ,String password){
+    ConfigData(SERWER_TYPE serwer_type, String serwerAdress, String login , String password){
         this.serwer_type = serwer_type;
         this.serwerAdress = serwerAdress;
         this.login = login;
@@ -37,22 +42,6 @@ public class ConfigData {
 
     public String getPassword() {
         return password;
-    }
-
-    public void setSerwer_type(SERWER_TYPE serwer_type) {
-        this.serwer_type = serwer_type;
-    }
-
-    public void setSerwerAdress(String serwerAdress) {
-        this.serwerAdress = serwerAdress;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     @Override
