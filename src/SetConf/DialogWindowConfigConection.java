@@ -1,6 +1,8 @@
-package SetConfig;
+package SetConf;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -18,13 +20,22 @@ import javafx.stage.Stage;
  */
 public class DialogWindowConfigConection extends Application {
 
-    static private SERWER_TYPE serwer_type = null;
+    private static SERWER_TYPE serwer_type = null;
+    private ConfigData config = new ConfigData();
 
-    static void showWindow(SERWER_TYPE type){
+    public void showWindow(SERWER_TYPE type){
         serwer_type = type;
         launch();
         System.out.println("Okno");
     }
+
+
+    TextField tf_login;
+
+    public String getTf_login() {
+        return tf_login.getText().toString();
+    }
+
 
     @Override
     public void start(Stage primaryStage)  {
@@ -54,21 +65,26 @@ public class DialogWindowConfigConection extends Application {
         vb_serverAdress.paddingProperty().setValue(new Insets(0,0,20,0));
         //Login
         Label lbl_login = new Label("Login");
-        TextField tf_login = new TextField();
+        tf_login = new TextField();
         //Password
         Label lbl_password = new Label("Hasło");
         PasswordField pf_password = new PasswordField();
+
+
         //Button(s)
         Button btn_save = new Button("Zapisz");
         HBox hb_butons = new HBox(btn_save);
         hb_butons.paddingProperty().setValue(new Insets(30,0,20,0));
         hb_butons.setAlignment(Pos.CENTER_RIGHT);
-        btn_save.setOnAction(event -> SaveData.save(
-                serwer_type,
-                tf_ServerAdress.getText(),
-                tf_login.getText(),
-                pf_password.getText()
-        ));
+
+        btn_save.setOnAction(new EventHandler<ActionEvent>() {
+             @Override
+             public void handle(ActionEvent event) {
+                 System.out.println(config + "In Window");
+                 primaryStage.hide();
+             }
+        });
+
         //Add all to main container
         VBox root = new VBox();
         root.paddingProperty().setValue(new Insets(20,20,0,20));

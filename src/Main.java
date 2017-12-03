@@ -1,6 +1,10 @@
-import SetConfig.SetConfig;
+import SetConf.*;
+import javafx.application.Application;
 
 public class Main {
+    public static ConfigData dataFTP = new ConfigData();
+
+    static String testString;
 
     public static void main(String[] args) {
         ReadConfig.read();
@@ -10,10 +14,12 @@ public class Main {
         if (args.length==1 && args[0].equals("config")){
             System.out.println("config all");
         } else if (args.length==1 && args[0].equals("configFTP")){
-            SetConfig.set();
+
+
         } else if (args.length==1 && args[0].equals("configSQL")){
             System.out.println("configSQL");
         }
+
 
 
     }

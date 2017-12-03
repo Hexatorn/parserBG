@@ -1,4 +1,4 @@
-package SetConfig;
+package SetConf;
 
 /**
  * Created by Hexatorn on 2017-11-27.
