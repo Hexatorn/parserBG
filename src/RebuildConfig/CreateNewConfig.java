@@ -32,20 +32,21 @@ public class CreateNewConfig {
     }
 
     private static String createXmlEntry (ConfigData configData){
-        return "\t<serwer>\n" +
-                "\t\t<server_type>\n" +
-                "\t\t\t"+configData.getSerwer_type()+"\n" +
-                "\t\t</server_type>\n" +
-                "\t\t<serer_adress>\n" +
-                "\t\t\t"+configData.getSerwerAdress()+"\n" +
-                "\t\t</serer_adress>\n" +
-                "\t\t<login>\n" +
-                "\t\t\t"+configData.getLogin()+"\n" +
-                "\t\t</login>\n" +
-                "\t\t<password>\n" +
-                "\t\t\t"+configData.getPassword()+"\n" +
-                "\t\t</password>\n" +
-                "\t</serwer>\n";
+        return
+            "\t<serwer>\n" +
+            "\t\t<server_type>" +
+            configData.getSerwer_type()+
+            "</server_type>\n" +
+            "\t\t<serer_adress>" +
+            configData.getSerwerAdress()+
+            "</serer_adress>\n" +
+            "\t\t<login>" +
+            configData.getLogin()+
+            "</login>\n" +
+            "\t\t<password>" +
+            configData.getPassword()+
+            "</password>\n" +
+            "\t</serwer>\n";
     }
 
 }

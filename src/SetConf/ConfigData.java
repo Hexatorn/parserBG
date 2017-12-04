@@ -20,7 +20,7 @@ public class ConfigData {
         this.password = "****";
     }
 
-    ConfigData(SERWER_TYPE serwer_type, String serwerAdress, String login , String password){
+    public ConfigData(SERWER_TYPE serwer_type, String serwerAdress, String login, String password){
         this.serwer_type = serwer_type;
         this.serwerAdress = serwerAdress;
         this.login = login;
