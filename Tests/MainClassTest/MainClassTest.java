@@ -7,7 +7,7 @@ public class MainClassTest {
     @Test
     public void testRun(){
         //System.out.println(new StartMode().get(StartMode.Start_Mode.CONFIG_ALL_RUN));
-        run(StartMode.Start_Mode.CONFIG_ALL_RUN);
+        run(StartMode.Start_Mode.NORMAL_RUN);
     }
 
     private void run(StartMode.Start_Mode start_mode){

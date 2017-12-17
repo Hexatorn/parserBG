@@ -32,6 +32,7 @@ public class Main {
         * configSQL - set up the SQL server configuration again
         * configSMTP - set up the SMTP server configuration again
         * */
+
         if (args.length==0){
             /*
             * Reading the configuration file.

@@ -1,16 +1,18 @@
 package RebuildConfig;
 
+import ReadXMLConfig.ReadXMLConfig;
 import SetConf.ConfigData;
 import Util.SERWER_TYPE;
-
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.Scanner;
+import java.util.ArrayList;
+
 
 public class CreateNewConfig {
 
-
+    /*
+    * Creating a configuration file with empty values.
+    * */
     public  static boolean create(){
         return create(
                 new ConfigData(SERWER_TYPE.SFTP),
@@ -18,7 +20,10 @@ public class CreateNewConfig {
                 new ConfigData(SERWER_TYPE.SMTP)
         );
     }
-
+    /*
+    * Setting values in the configuration file.
+    * It is mandatory to provide three ConfigData objects
+    * */
     public static boolean create(ConfigData SFTPConfigData,ConfigData SQLConfigData, ConfigData SMTPConfigData){
         boolean succesCreate = true;
 
@@ -36,14 +41,40 @@ public class CreateNewConfig {
 
         return succesCreate;
     }
-
+    /*
+    * Changing the configuration data of one of the servers.
+    * */
     public  static boolean create(ConfigData configData){
         boolean succesCreate = true;
-//        Tu będzie kod
-        return succesCreate;
+        /*
+        * Checking the server type and determining the place in the configuration file.
+        * */
+        int positionOnTheArrayList = setPosition(configData);
+        System.out.println("Position on the list "+positionOnTheArrayList);
+        System.out.println(configData);
+        /*
+        * Reading the current configuration file
+        * */
+        ArrayList<ConfigData> configDataArrayList;
+        configDataArrayList = ReadXMLConfig.getConfigDataList();
+        /*
+        * Setting new configuration data in configDataArrayList
+        * */
+        configDataArrayList.set(positionOnTheArrayList,configData);
+        /*
+        * Saving data to the configuration file
+        * */
+        return create(
+                configDataArrayList.get(0),
+                configDataArrayList.get(1),
+                configDataArrayList.get(2)
+        );
     }
 
-
+    /*
+    * Creates an entry in the configuration file for one server.
+    * Doesn't save data to a file.
+    * */
 
     private static String createXmlEntry (ConfigData configData){
         return
@@ -61,6 +92,20 @@ public class CreateNewConfig {
             configData.getPassword()+
             "</password>\n" +
             "\t</serwer>\n";
+    }
+
+    /*
+    * Defines the position of the server configuration data in the configuration file
+    * */
+    private static int setPosition(ConfigData configData){
+        int position = -1;
+        if(configData.getSerwer_type().equals(SERWER_TYPE.SFTP))
+            position = 0;
+        else if(configData.getSerwer_type().equals(SERWER_TYPE.SQL))
+            position = 1;
+        else if(configData.getSerwer_type().equals(SERWER_TYPE.SMTP))
+            position = 2;
+        return position;
     }
 
 }

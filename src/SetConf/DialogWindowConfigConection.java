@@ -1,6 +1,7 @@
 package SetConf;
 
 import ReadXMLConfig.ReadXMLConfig;
+import RebuildConfig.CreateNewConfig;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -68,17 +69,22 @@ public class DialogWindowConfigConection extends Application {
         hb_butons.setAlignment(Pos.CENTER_RIGHT);
 
         btn_save.setOnAction(event -> {
-
-            ArrayList<ConfigData> configDataArrayList;
-            configDataArrayList = ReadXMLConfig.getConfigDataList();
-            System.out.println(configDataArrayList);
-
             ConfigData newSFTPConfigData = new ConfigData(
                     serwer_type,
                     tf_ServerAdress.getText(),
                     tf_login.getText(),
                     pf_password.getText());
-            System.out.println(newSFTPConfigData);
+            /*
+            * Changing the configuration data of one of the servers.
+            * */
+            ;
+            System.out.println("log-> Wprowadznie zmian w pliku konfiguracyjnym");
+            System.out.println("log-> Zmienianie danych serwera "+serwer_type);
+            if (CreateNewConfig.create(newSFTPConfigData))
+                System.out.println("log-> Zmiany zapisane");
+            else
+                System.out.println("log-> Błąd przy próbie zapisu zmian");
+
             primaryStage.hide();
         });
 
