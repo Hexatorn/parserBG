@@ -1,5 +1,6 @@
 package SetConf;
 
+import ReadXMLConfig.ReadXMLConfig;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,6 +14,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import Util.SERWER_TYPE;
 
+import java.util.ArrayList;
+
 
 public class DialogWindowConfigConection extends Application {
 
@@ -22,7 +25,6 @@ public class DialogWindowConfigConection extends Application {
     public void showWindow(SERWER_TYPE type){
         serwer_type = type;
         launch();
-        System.out.println("Okno");
     }
 
     @Override
@@ -44,10 +46,10 @@ public class DialogWindowConfigConection extends Application {
                 </HBox - buttons container>
             </VBox - root>
          */
-        primaryStage.setTitle("Konfiguracja Połącznia z serwerem FTP");
+        primaryStage.setTitle("Konfiguracja Połącznia z serwerem SFTP");
 
         //Server Address
-        Label lbl_serverAdress = new Label("Adres Serwera FTP");
+        Label lbl_serverAdress = new Label("Adres Serwera SFTP");
         TextField tf_ServerAdress = new TextField();
         VBox vb_serverAdress = new VBox(lbl_serverAdress,tf_ServerAdress);
         vb_serverAdress.paddingProperty().setValue(new Insets(0,0,20,0));
@@ -66,10 +68,17 @@ public class DialogWindowConfigConection extends Application {
         hb_butons.setAlignment(Pos.CENTER_RIGHT);
 
         btn_save.setOnAction(event -> {
-            System.out.println(config + "In Window");
-            System.out.println(tf_ServerAdress.getText());
-            System.out.println(tf_login.getText());
-            System.out.println(pf_password.getText());
+
+            ArrayList<ConfigData> configDataArrayList;
+            configDataArrayList = ReadXMLConfig.getConfigDataList();
+            System.out.println(configDataArrayList);
+
+            ConfigData newSFTPConfigData = new ConfigData(
+                    serwer_type,
+                    tf_ServerAdress.getText(),
+                    tf_login.getText(),
+                    pf_password.getText());
+            System.out.println(newSFTPConfigData);
             primaryStage.hide();
         });
 

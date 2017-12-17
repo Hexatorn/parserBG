@@ -9,19 +9,25 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class CreateNewConfig {
-    public CreateNewConfig() {
 
 
+    public  static boolean create(){
+        return create(
+                new ConfigData(SERWER_TYPE.SFTP),
+                new ConfigData(SERWER_TYPE.SQL),
+                new ConfigData(SERWER_TYPE.SMTP)
+        );
     }
-    public static boolean create(){
+
+    public static boolean create(ConfigData SFTPConfigData,ConfigData SQLConfigData, ConfigData SMTPConfigData){
         boolean succesCreate = true;
 
         try {
             PrintWriter newConfig = new PrintWriter("config.xml");
             newConfig.print("<config>\n");
-            newConfig.print(createXmlEntry(new ConfigData(SERWER_TYPE.SFTP)));
-            newConfig.print(createXmlEntry(new ConfigData(SERWER_TYPE.SQL)));
-            newConfig.print(createXmlEntry(new ConfigData(SERWER_TYPE.SMTP)));
+            newConfig.print(createXmlEntry(SFTPConfigData));
+            newConfig.print(createXmlEntry(SQLConfigData));
+            newConfig.print(createXmlEntry(SMTPConfigData));
             newConfig.print("</config>\n");
             newConfig.close();
         } catch (FileNotFoundException e) {
@@ -30,6 +36,14 @@ public class CreateNewConfig {
 
         return succesCreate;
     }
+
+    public  static boolean create(ConfigData configData){
+        boolean succesCreate = true;
+//        Tu będzie kod
+        return succesCreate;
+    }
+
+
 
     private static String createXmlEntry (ConfigData configData){
         return
