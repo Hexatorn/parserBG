@@ -51,6 +51,6 @@ public class ConfigData {
                 ", serwerAdress='" + serwerAdress + '\'' +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
-                '}';
+                "}";
     }
 }

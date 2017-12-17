@@ -4,11 +4,12 @@ import RebuildConfig.*;
 import Util.SERWER_TYPE;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
         /*
-        * Checking if configuration file exist
+        * Checking configuration file
         * If it does not exist, an empty configuration file is created
         * */
         File config = new File("config.xml");
@@ -19,10 +20,16 @@ public class Main {
             System.out.println("log-> Został utworzony nowy konfig");
         }
         /*
-        *
+        * Reading the configuration file.
+        * The configuration file should contain data to connect to:
+        * - SFTP server (first element of the list)
+        * - SQL  server (second element of the list)
+        * - SMTP server (third element of the list)
         * */
-        ReadXMLConfig.getConfigDataList();
+        ArrayList<ConfigData> configDataArrayList;
+        configDataArrayList = ReadXMLConfig.getConfigDataList();
 
+        System.out.println(":)"+configDataArrayList);
 
         /*
         * Starting the program in one of the available modes

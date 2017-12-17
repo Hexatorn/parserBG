@@ -36,9 +36,6 @@ public class ReadXMLConfig {
                     element.getElementsByTagName("password").item(0).getTextContent()
             ));
         }
-
-        System.out.println(configDataList);
-
         return configDataList;
     }
 
