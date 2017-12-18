@@ -25,7 +25,6 @@ public class ConfigData {
         this.serwerAdress = serwerAdress;
         this.login = login;
         this.password = password;
-        System.out.println("utworzono ConfigData");
     }
 
     public SERWER_TYPE getSerwer_type() {

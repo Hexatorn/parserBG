@@ -42,7 +42,7 @@ public class ReadXMLConfig {
     private static SERWER_TYPE conertStringToEnumSerwerType(String serverType){
         switch (serverType){
             case "SFTP":
-                return SERWER_TYPE.FTP;
+                return SERWER_TYPE.SFTP;
             case "SQL":
                 return SERWER_TYPE.SQL;
             case "SMTP":

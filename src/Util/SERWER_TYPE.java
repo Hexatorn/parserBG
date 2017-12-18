@@ -1,5 +1,5 @@
 package Util;
 
 public enum SERWER_TYPE {
-    FTP, SFTP, SQL, SMTP
+    SFTP, SQL, SMTP
 }

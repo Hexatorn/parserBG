@@ -1,7 +1,6 @@
 package SetConf;
 
-import ReadXMLConfig.ReadXMLConfig;
-import RebuildConfig.CreateNewConfig;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -15,7 +14,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import Util.SERWER_TYPE;
 
-import java.util.ArrayList;
 
 
 public class DialogWindowConfigConection extends Application {
@@ -47,10 +45,10 @@ public class DialogWindowConfigConection extends Application {
                 </HBox - buttons container>
             </VBox - root>
          */
-        primaryStage.setTitle("Konfiguracja Połącznia z serwerem SFTP");
+        primaryStage.setTitle("Konfiguracja Połącznia z serwerem "+serwer_type);
 
         //Server Address
-        Label lbl_serverAdress = new Label("Adres Serwera SFTP");
+        Label lbl_serverAdress = new Label("Adres Serwera "+serwer_type);
         TextField tf_ServerAdress = new TextField();
         VBox vb_serverAdress = new VBox(lbl_serverAdress,tf_ServerAdress);
         vb_serverAdress.paddingProperty().setValue(new Insets(0,0,20,0));
@@ -69,7 +67,7 @@ public class DialogWindowConfigConection extends Application {
         hb_butons.setAlignment(Pos.CENTER_RIGHT);
 
         btn_save.setOnAction(event -> {
-            ConfigData newSFTPConfigData = new ConfigData(
+            ConfigData newConfigData = new ConfigData(
                     serwer_type,
                     tf_ServerAdress.getText(),
                     tf_login.getText(),
@@ -77,15 +75,13 @@ public class DialogWindowConfigConection extends Application {
             /*
             * Changing the configuration data of one of the servers.
             * */
-            ;
             System.out.println("log-> Wprowadznie zmian w pliku konfiguracyjnym");
             System.out.println("log-> Zmienianie danych serwera "+serwer_type);
-            if (CreateNewConfig.create(newSFTPConfigData))
+            if (CreateNewConfig.create(newConfigData))
                 System.out.println("log-> Zmiany zapisane");
             else
                 System.out.println("log-> Błąd przy próbie zapisu zmian");
-
-            primaryStage.hide();
+            primaryStage.close();
         });
 
         //Add all to main container

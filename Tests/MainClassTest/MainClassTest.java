@@ -1,7 +1,5 @@
 import org.junit.Test;
 
-import java.util.TreeMap;
-
 
 public class MainClassTest {
     @Test
@@ -13,7 +11,7 @@ public class MainClassTest {
     private void run(StartMode.Start_Mode start_mode){
         System.out.println("start main class without parameters");
         String[] args = new StartMode().get(start_mode);
-        Main.main(args);
+        ParserBG.main(args);
         System.out.println("end of run");
     }
 

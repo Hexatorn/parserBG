@@ -1,7 +1,6 @@
-package RebuildConfig;
+package SetConf;
 
 import ReadXMLConfig.ReadXMLConfig;
-import SetConf.ConfigData;
 import Util.SERWER_TYPE;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -50,8 +49,6 @@ public class CreateNewConfig {
         * Checking the server type and determining the place in the configuration file.
         * */
         int positionOnTheArrayList = setPosition(configData);
-        System.out.println("Position on the list "+positionOnTheArrayList);
-        System.out.println(configData);
         /*
         * Reading the current configuration file
         * */
